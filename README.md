@@ -29,6 +29,14 @@ The five initial tests cover a high score, a two-grade GPA, and each scholarship
 
 The yellow lines are partially covered compound checks: score/GPA/credit validation, the GPA empty-input guard, and scholarship eligibility conditions. Red lines include invalid-input exception bodies, lower letter grades and the F switch path, and the no-award fallback. These are paths the happy-path examples never execute.
 
+## B — CFG and complete coverage
+
+![Annotated scholarship control-flow graph](cfg.png)
+
+The diagram labels each branch with the exact test method that exercises it. It was generated with AI assistance, not hand-drawn; the assignment asks for a hand-drawn CFG, so this image does not claim to satisfy that particular presentation requirement.
+
+The expanded suite has 26 passing tests in `results/mvn-verify-B.txt`. `results/jacoco-B.csv` reports `BRANCH_MISSED = 0` and `LINE_MISSED = 0` (41/41 branches and 25/25 lines covered). Separate exception tests exercise each true operand of the scholarship input-validation `||` condition.
+
 ## AI assistance
 
 GitHub Copilot was used to help implement and run the tests, calculate coverage from JaCoCo CSV output, and prepare the control-flow diagram. The results and explanations are based on the code and command outputs in this repository.
