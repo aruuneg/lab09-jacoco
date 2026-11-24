@@ -37,6 +37,10 @@ The diagram labels each branch with the exact test method that exercises it. It 
 
 The expanded suite has 26 passing tests in `results/mvn-verify-B.txt`. `results/jacoco-B.csv` reports `BRANCH_MISSED = 0` and `LINE_MISSED = 0` (41/41 branches and 25/25 lines covered). Separate exception tests exercise each true operand of the scholarship input-validation `||` condition.
 
+## C — Loop-boundary cases
+
+The loop is tested with zero iterations (`gpaEmptyArrayRepresentsZeroIterations`, which asserts the empty-array exception), one iteration (`gpaCalculatesOneIteration`), and multiple iterations (`gpaCalculatesMultipleIterations`); the null-array exception is also covered by `gpaRejectsNullScores`. The suite still reports 0 missed branches and 0 missed lines because these tests exercise loop cardinalities already represented in the CFG; they remain valuable because they check behavior for empty, singleton, and larger collections rather than merely whether each structural path ran.
+
 ## AI assistance
 
 GitHub Copilot was used to help implement and run the tests, calculate coverage from JaCoCo CSV output, and prepare the control-flow diagram. The results and explanations are based on the code and command outputs in this repository.
