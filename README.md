@@ -1,0 +1,34 @@
+# Lab 09: JaCoCo Coverage
+
+**Name:** ANAR BATBOLD  
+**Student code:** B170910823
+
+## Environment
+
+`java -version`:
+
+```text
+openjdk version "17.0.21.0.2" 2026-10-22 LTS
+OpenJDK Runtime Environment Microsoft-15779939 (build 17.0.21.0.2+1-LTS)
+OpenJDK 64-Bit Server VM Microsoft-15779939 (build 17.0.21.0.2+1-LTS, mixed mode, sharing)
+```
+
+`mvn -version`:
+
+```text
+Apache Maven 3.9.16 (2bdd9fddda4b155ebf8000e807eb73fd829a51d5)
+Maven home: C:\apache-maven-3.9.16
+Java version: 17.0.21.0.2, vendor: Microsoft, runtime: C:\Program Files\Microsoft\jdk-17.0.21.21-hotspot
+Default locale: en_US, platform encoding: Cp1252
+OS name: "windows 11", version: "10.0", arch: "amd64", family: "Windows 11"
+```
+
+## A — Happy-path baseline
+
+The five initial tests cover a high score, a two-grade GPA, and each scholarship award tier. `results/mvn-verify-A.txt` records 5 passing tests. From `results/jacoco-A.csv`, `ScholarshipCalculator` has 16/25 lines covered (64.0%) and 22/41 branches covered (53.7%).
+
+The yellow lines are partially covered compound checks: score/GPA/credit validation, the GPA empty-input guard, and scholarship eligibility conditions. Red lines include invalid-input exception bodies, lower letter grades and the F switch path, and the no-award fallback. These are paths the happy-path examples never execute.
+
+## AI assistance
+
+GitHub Copilot was used to help implement and run the tests, calculate coverage from JaCoCo CSV output, and prepare the control-flow diagram. The results and explanations are based on the code and command outputs in this repository.
