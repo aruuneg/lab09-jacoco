@@ -43,7 +43,9 @@ The loop is tested with zero iterations (`gpaEmptyArrayRepresentsZeroIterations`
 
 ## D — Boundary defect reproduced
 
-The boundary test `letterGradeReturnsDAt60` fails in `results/mvn-test-D-fail.txt` with `expected: <D> but was: <F>`. The implementation checks `score > 60`, although the specification includes 60 in the D range; the separate fix and final verification are recorded in the next commit.
+`letterGradeReturnsDAt60` failed in `results/mvn-test-D-fail.txt` with `expected: <D> but was: <F>`. The separate commit `Fix letterGrade: > 60 to >= 60 for the D boundary` changes the comparison to match the specification. Before testing exactly 60, `score > 60` and `score >= 60` produce the same branch outcomes for the other tested score ranges, so branch coverage could reach 100% while the boundary result remained wrong. The boundary tests cover 60, 59.99, 69.99, 0, 100, 89.99, and 90. `results/mvn-verify-final.txt` records 35 passing tests, and `results/jacoco-final.csv` confirms 0 missed branches (41/41) and 0 missed lines (25/25).
+
+Branch and line coverage measure whether code paths executed, not whether the outputs at specification boundaries are correct; the failing assertion at 60 supplies that missing correctness check.
 
 ## AI assistance
 
