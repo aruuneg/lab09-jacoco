@@ -41,6 +41,10 @@ The expanded suite has 26 passing tests in `results/mvn-verify-B.txt`. `results/
 
 The loop is tested with zero iterations (`gpaEmptyArrayRepresentsZeroIterations`, which asserts the empty-array exception), one iteration (`gpaCalculatesOneIteration`), and multiple iterations (`gpaCalculatesMultipleIterations`); the null-array exception is also covered by `gpaRejectsNullScores`. The suite still reports 0 missed branches and 0 missed lines because these tests exercise loop cardinalities already represented in the CFG; they remain valuable because they check behavior for empty, singleton, and larger collections rather than merely whether each structural path ran.
 
+## D — Boundary defect reproduced
+
+The boundary test `letterGradeReturnsDAt60` fails in `results/mvn-test-D-fail.txt` with `expected: <D> but was: <F>`. The implementation checks `score > 60`, although the specification includes 60 in the D range; the separate fix and final verification are recorded in the next commit.
+
 ## AI assistance
 
 GitHub Copilot was used to help implement and run the tests, calculate coverage from JaCoCo CSV output, and prepare the control-flow diagram. The results and explanations are based on the code and command outputs in this repository.
